@@ -23,11 +23,7 @@ test("Window Loads Properly", async () => {
   expect(width).toBeGreaterThan(0);
   expect(height).toBeGreaterThan(0);
   // App is loaded properly
-  expect(
-    /Welcome to Your Vue\.js (\+ TypeScript )?App/.test(
-      await (await app.client.$("#app")).getHTML()
-    )
-  ).toBe(true);
+  expect(/Electron for vue and antv template/.test(await (await app.client.$("#app")).getHTML())).toBe(true);
 
   await stopServe();
 });
