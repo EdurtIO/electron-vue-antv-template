@@ -1,21 +1,45 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router";
-import HomeView from "../views/HomeView.vue";
+import LayoutContainer from "@/views/layout/Layout.vue";
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
+    component: LayoutContainer
+  },
+  {
+    path: "/home",
     name: "home",
-    component: HomeView
+    redirect: "/home/index",
+    component: LayoutContainer,
+    children: [
+      {
+        path: "index",
+        component: () => import("@/views/HomeView.vue")
+      }
+    ]
   },
   {
     path: "/about",
     name: "about",
-    component: () => import(/* webpackChunkName: "about" */ "../views/AboutView.vue")
+    redirect: "/about/index",
+    component: LayoutContainer,
+    children: [
+      {
+        path: "index",
+        component: () => import("../views/AboutView.vue")
+      }
+    ]
   },
   {
-    path: "/template/antd",
-    name: "antd",
-    component: () => import("../template/AntdTemplate.vue")
+    path: "/template",
+    name: "template",
+    component: LayoutContainer,
+    children: [
+      {
+        path: "antd",
+        component: () => import("../template/AntdTemplate.vue")
+      }
+    ]
   }
 ];
 
