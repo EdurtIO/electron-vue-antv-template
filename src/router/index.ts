@@ -40,6 +40,27 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import("../template/AntdTemplate.vue")
       }
     ]
+  },
+  {
+    path: "/common",
+    name: "common",
+    children: [
+      {
+        path: "not_found",
+        component: () => import("../views/common/NotFound.vue")
+      }
+    ]
+  },
+  {
+    path: "/i18n",
+    name: "i18n",
+    component: LayoutContainer,
+    children: [
+      {
+        path: "antd",
+        component: () => import("../views/i18n/I18nView.vue")
+      }
+    ]
   }
 ];
 
